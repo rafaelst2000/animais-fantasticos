@@ -5,22 +5,17 @@ export default function initModal() {
   
   
   if(botaoAbrir && botaoFechar && containerModal) {
-    function abrir(event){
+    function toggleModal(event){
       event.preventDefault()
-      containerModal.classList.add('ativo')
-    }
-    
-    function fechar(){
-      event.preventDefault()
-      containerModal.classList.remove('ativo')
+      containerModal.classList.toggle('ativo')
     }
     
     function cliqueFora(event){
-      if(event.target === this) fechar()
+      if(event.target === this) toggleModal(event)
     }
     
-    botaoAbrir.addEventListener('click', abrir)
-    botaoFechar.addEventListener('click', fechar)
+    botaoAbrir.addEventListener('click', toggleModal)
+    botaoFechar.addEventListener('click', toggleModal)
     containerModal.addEventListener('click', cliqueFora)
   }
 }
